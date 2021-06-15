@@ -14,27 +14,16 @@ class App extends Component {
       "https://jsonplaceholder.typicode.com/users"
     );
     this.setState({
-      usuarios: [
-        {
-          nombre: "Jona",
-          correo: "jona@gmail.com",
-          enlace: "jona.com",
-        },
-        {
-          nombre: "Platzi",
-          correo: "self@platzi.com",
-          enlace: "platzi.com",
-        },
-      ],
+      usuarios: respuesta.data,
     });
   }
 
   ponerFilas = () =>
     this.state.usuarios.map((usuario) => (
-      <tr>
-        <td>{usuario.nombre}</td>
-        <td>{usuario.correo}</td>
-        <td>{usuario.enlace}</td>
+      <tr key={usuario.id}>
+        <td>{usuario.name}</td>
+        <td>{usuario.email}</td>
+        <td>{usuario.website}</td>
       </tr>
     ));
 
