@@ -1,8 +1,25 @@
-Stateful vs Stateless
+Ciclo de vida de componentes de React
 
--Con estos terminos nos damos a entender que un componente tiene estado o no.
--Cuando un componente es funcional, es Stateless.
--Cuando el componente es de clase es Stateful.
--Al definir un componente de clase, dentro de su constructor colocamos el super().
-	.Segudo de esto, definimos el estado, que regularmente es un objeto.
--En los componentes de clase, las funciones las definimos solo colocando el nombre, no es necesario func. ni const.
+Inicialización:
+	-Inicializamos el estado.
+
+Montaje:
+	-componentWillMount: Lo que se ejecuta antes del render.
+	-render: Obligatorio. Definimos lo que se renderizará.
+	-componentDidMount: Lo que se ejecuta despues del render.
+
+Actualización: Cuando se edita nuestro componente:
+	-Props:
+		.componentWillReciveProps.
+		.shouldComponentUpdate.
+		.componentWillUpdate.
+		.render.
+		.componentDidUpdate.
+	-State:
+		.shouldComponentUpdate.
+		.componentWillUpdate.
+		.render.
+		.componentDidUpdate.
+
+Desmontaje:
+	-componentWillUnmount.
