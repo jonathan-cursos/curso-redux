@@ -1,5 +1,8 @@
-Agregando funciones a la app con React
+Stateful vs Stateless
 
--En una función podemos retornar un array, que cada elemento sea JSX y renderizarlos.
--Para renderizarlos, llamamos dentro del return a la función, pero debemos hacerlo con ().
--Por ejemplo: {array()}
+-Con estos terminos nos damos a entender que un componente tiene estado o no.
+-Cuando un componente es funcional, es Stateless.
+-Cuando el componente es de clase es Stateful.
+-Al definir un componente de clase, dentro de su constructor colocamos el super().
+	.Segudo de esto, definimos el estado, que regularmente es un objeto.
+-En los componentes de clase, las funciones las definimos solo colocando el nombre, no es necesario func. ni const.
