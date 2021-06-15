@@ -1,10 +1,5 @@
-¿Qué es React y cómo funciona?
+Agregando funciones a la app con React
 
--JSX: Sintaxis con la que escribimos código dentro de React.
-
-DOM:
-  -Sín react tenemos el Browser DOM: Según lo que queremos cambiar del HTML, tenemos que ir hasta ese
-    lugar y ahí hacer el cambio.
-  -Con React entra el Virtual DOM: Tenemos el arbol original y una copia (virtual), react compara ambas 
-    cuando hubo un cambio y re-renderiza con ese cambio. No buscamos en el html, sino que vamos a lo que
-    vamos a cambiar dentro del JS.
+-En una función podemos retornar un array, que cada elemento sea JSX y renderizarlos.
+-Para renderizarlos, llamamos dentro del return a la función, pero debemos hacerlo con ().
+-Por ejemplo: {array()}
