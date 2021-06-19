@@ -1,19 +1,14 @@
-¿Qúe es Redux, cuándo usarlo y por qué?
+Introducción: las fases de Redux
 
-Qué es Redux
-	-Es una herramienta de uso libre que permite almacenar todos los datos de nuestro estado en un solo lugar.
+Los 4 pilares de Redux:
+	-Store (almacenamiento): Lo principal de Redux, donde se almacena todo lo que necesitamos.
+	-Reducers (estado): Dependiendo del componente, la info. que vamos a tener. Por ejemplo, hablando de 'Usuarios', el reducer de usuarios va a ser el que
+		tendrá el estado de estos usuarios y lo entregará al Store.
+	-Action creators (funciones): Esas funciones que vamos a llamar para solicitar información. Normalmente son promesas.
+	-Component (Componente JSX): Todo el código JSX.
 
-Principios de Redux:
-	-Almacenamiento: Solo se almacenarán estados.
-	-Inmutabilidad: Al crearse nuevos estados no se sobreescriben los otros.
-	-Centralizado: Todo se almacena en un solo lugar.
-
-Cómo funciona
-	-En caso de no usar redux, y haya componentes que tengan estado, pero que necesiten compartirlo con otros, ese
-		estado habría que ir pasandolo entre componentes hasta que llegue a su destino.
-	-Con Redux tenemos un estado global, que puede ser consultado por cualquier componente en cualquier momento.
-
-Cuándo usarlo
-	-Apps grandes: Sí son apps pequeñas, el estado local podría ser mejor opción.
-	-Compartir información: Cuando queramos compartir información entre componentes.
-	-Estados: Siempre que manejemos información, datos.
+¿Cómo funciona todo esto?
+	-Tenemos el componente, el action y el reducer.
+	-El componente se comunica con el action, el action se va al reducer y entrega la información que necesita.
+	-Una vez un reducer es actualizado, regresa al componente con el nuevo estado, y el componente gracias al Virtual DOM ya sabe lo que necesita cambiar.
+	-El core de todo esto, es el almacenamiento principal, ya que sin esto, Redux no funcionaría.
