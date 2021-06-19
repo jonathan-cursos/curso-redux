@@ -1,14 +1,19 @@
-Redux Thunk
+ciclo completo de Redux
 
--Es un middleware que podemos usar para poder escribir acciones que retornen funciones en lugar de un objeto (que es lo normal).
--Entonces thunk puede ser usado para retrasar el envío de una acción hasta que se cumpla una línea de código asíncrona, como lo haremos.
--En nuestro caso, podemos dentro de un evento, llamar al action creado y ejecutarlo.
--Para ello, la llamada a la API la haremos en el action, y como payload pasaremos su resultado.
+Componente (JSX):
+	-El componente se comunica con el reducer por medio del mapStateToProps.
+		.En este, indicamos que reducer es el que nos va a traer.
+	-En caso de queramos traer otra información del estado, podemos hacerlo con los action, donde indicaremos cual action usar.
+	-En nuestro caso, sí no usamos un action, nos trae un array vacío como información, sí usamos el action creado, nos trae
+		datos de una API.
+	
+Reducer:
+	-Al escoger el reducer que estamos llamando, nos enviará una información dependiendo del switch de ese reducer.
+	-Aquí tenemos que en caso de no pasar action, solo nos retorna el state.
+	-En caso de que haya un type, aquí si sobreescribimos el estado.
+	-Para saber que hay o no un type, es sí llamamos o no un action.
 
--Para poder hacer eso, debemos configurar el middleware:
-	.En el index, de redux, tambien importamos applyMiddleware.
-	.Importamos tambien redux-thunk (lo instalamos).
-	-Como 3er parametro del createStore, pasamos applyMiddleware(), y como parametro redux-thunk.
-
--Con esto, al inicio no tendremos datos, pero como en el componentDidMount estamos llamando al action que hace el fetch, al montarse el componente
-	si tendremos los datos.
+Action:
+	-En caso de llamar un action, este ya vendrá con el type, y realizará su sobreescritura.
+	-Pero aquí en el action, es donde definimos que datos van a sobreescribir el estado.
+	-Finalmente, cuando se sobreescriben los datos, gracias al Virtual DOM, en el componente se verán reflejados.
