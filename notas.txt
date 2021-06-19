@@ -1,15 +1,25 @@
-Store
+Reducer
 
-Dependencias:
-	-redux.
-	-react-redux.
+-Antes que nada haremos que toda nuestra app tenga accesible el store.
+-Para ello:
+	.En el index, en el reactDOM.render(), en donde renderizamos nuestra App, encapsulamos esa app en el componente
+		Provider.
+	.Tendrá una prop 'store' que llevará como valor el store que creamos en este mismo archivo.
+	.Ahora toda la app puede acceder al almacenamiento.
 
-Creación del Store:
-	-En el index de nuestra app, importaremos:
-		.createStore de redux.
-		.Provider de react-redux.
-	-Creamos una const, cuyo valor sea createStore(), tendrá 2 params:
-		.Todos los reducers (por ahora, un obj. vacío).
-		.El estado inicial.
-
--Iremos avanzando para ver que hacer con este store.
+Creación de reducers:
+	-Dentro de src crearemos la carpeta 'reducers'.
+	-Ahí tendremos un index, donde combinaremos todos los reducers que iremos creando, que estarán en esta carpeta.
+	-En el index, para combinarlos:
+		.Importamos 'combineReducers' de Redux. Es un metodo.
+		.Exportamos la ejecución de este metodo, como parametro tendrá un objeto, con cada reducer que iremos creando.
+	-Ahorá, crearemos en esta carpeta un reducer:
+		.Creamos una constante, será un objeto, este será el estado inicial de este reducer, así que inicializamos los valores inciales de este objeto.
+		.Exportamos una función con 2 params:
+			-state: El estado, que por defecto tendrá el estado inicial como valor.
+			-action: El action que vamos a recibir.
+		.Validaremos con un switch el 'type' del action, y segun sea el caso, realizaremos alguna acción segun lo que vamos a devolver:
+			-En nuestro ejemplo, en caso de que sea 'traer_usuarios' devolvemos un objeto, con la descomposición del state y el elemento usuarios, cuyo valor sea el
+				elemento action.payload.
+		-El elemento 'usuarios' llevará el payload, porque es el que estamos solicitando, pero ademas tambien, retornamos todo el estado completo.
+		.Por defecto retornamos el state.
