@@ -1,16 +1,16 @@
-Conexión a un componente
+Actions
 
-Conectar componente a redux:
-	-Importamos 'connect' de react-redux.
-	-Ahora exportamos connect()(), en el 2do parentesis irá el componente, en el 1ero:
-		.Una función donde indicamos que datos traer.
-		.Un objeto con los actions a usar.
-	-Por ahora dejaremos a los actions con un objeto vacío.
+Crear un action:
+	-En src crearemos la carpeta actions, y ahí un action por cada reducer.
+	-Dentro de cada action, podemos tener diferentes funciones para el manejo de datos, que exportaremos por separado.
+	-Cada función retornará otra función, esta segunda:
+		.Debe tener 'dispatch' por parametro.
+		.Ejecutará ese metodo dispatch, con un objeto que tenga:
+			-type: Un string con el type, que es la accion que se ejecutará (Lo que estamos validando en el switch del reducer).
+			-Un payload con información.
 
-Función:
-	-Tendrá el state por parametro.
-	-Retornamos de ese state los datos a traer (los elementos del objeto de combineReducers).
-
--Ahorá, sí usamos un componente de clase, no necesitamos el state del constructor. Por el contrario, sí imprimimos en pantalla las props,
-	vemos que ahorá aparece ahí los datos que hemos traído.
--Esos datos son los que colocamos como estado de inicial del reducer que está en combineReducers.
+Llamar action dentro del componente:
+	-Importamos todas las funciones del action creado, así:
+		.import * as nombreAction from 'ruta'.
+	-Ese elemento lo colocamos como 2do parametro al 1er parentesis de connect.
+	-Nuevamente, sí imprimimos las props, vemos que ahora esta la función que creamos en el action.
