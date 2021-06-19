@@ -1,25 +1,19 @@
-Ciclo de vida de componentes de React
+¿Qúe es Redux, cuándo usarlo y por qué?
 
-Inicialización:
-	-Inicializamos el estado.
+Qué es Redux
+	-Es una herramienta de uso libre que permite almacenar todos los datos de nuestro estado en un solo lugar.
 
-Montaje:
-	-componentWillMount: Lo que se ejecuta antes del render.
-	-render: Obligatorio. Definimos lo que se renderizará.
-	-componentDidMount: Lo que se ejecuta despues del render.
+Principios de Redux:
+	-Almacenamiento: Solo se almacenarán estados.
+	-Inmutabilidad: Al crearse nuevos estados no se sobreescriben los otros.
+	-Centralizado: Todo se almacena en un solo lugar.
 
-Actualización: Cuando se edita nuestro componente:
-	-Props:
-		.componentWillReciveProps.
-		.shouldComponentUpdate.
-		.componentWillUpdate.
-		.render.
-		.componentDidUpdate.
-	-State:
-		.shouldComponentUpdate.
-		.componentWillUpdate.
-		.render.
-		.componentDidUpdate.
+Cómo funciona
+	-En caso de no usar redux, y haya componentes que tengan estado, pero que necesiten compartirlo con otros, ese
+		estado habría que ir pasandolo entre componentes hasta que llegue a su destino.
+	-Con Redux tenemos un estado global, que puede ser consultado por cualquier componente en cualquier momento.
 
-Desmontaje:
-	-componentWillUnmount.
+Cuándo usarlo
+	-Apps grandes: Sí son apps pequeñas, el estado local podría ser mejor opción.
+	-Compartir información: Cuando queramos compartir información entre componentes.
+	-Estados: Siempre que manejemos información, datos.
