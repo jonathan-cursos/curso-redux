@@ -1,16 +1,14 @@
-Actions
+Redux Thunk
 
-Crear un action:
-	-En src crearemos la carpeta actions, y ahí un action por cada reducer.
-	-Dentro de cada action, podemos tener diferentes funciones para el manejo de datos, que exportaremos por separado.
-	-Cada función retornará otra función, esta segunda:
-		.Debe tener 'dispatch' por parametro.
-		.Ejecutará ese metodo dispatch, con un objeto que tenga:
-			-type: Un string con el type, que es la accion que se ejecutará (Lo que estamos validando en el switch del reducer).
-			-Un payload con información.
+-Es un middleware que podemos usar para poder escribir acciones que retornen funciones en lugar de un objeto (que es lo normal).
+-Entonces thunk puede ser usado para retrasar el envío de una acción hasta que se cumpla una línea de código asíncrona, como lo haremos.
+-En nuestro caso, podemos dentro de un evento, llamar al action creado y ejecutarlo.
+-Para ello, la llamada a la API la haremos en el action, y como payload pasaremos su resultado.
 
-Llamar action dentro del componente:
-	-Importamos todas las funciones del action creado, así:
-		.import * as nombreAction from 'ruta'.
-	-Ese elemento lo colocamos como 2do parametro al 1er parentesis de connect.
-	-Nuevamente, sí imprimimos las props, vemos que ahora esta la función que creamos en el action.
+-Para poder hacer eso, debemos configurar el middleware:
+	.En el index, de redux, tambien importamos applyMiddleware.
+	.Importamos tambien redux-thunk (lo instalamos).
+	-Como 3er parametro del createStore, pasamos applyMiddleware(), y como parametro redux-thunk.
+
+-Con esto, al inicio no tendremos datos, pero como en el componentDidMount estamos llamando al action que hace el fetch, al montarse el componente
+	si tendremos los datos.
