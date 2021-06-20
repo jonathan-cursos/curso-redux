@@ -1,14 +1,3 @@
-Archivos Types
+Try catch
 
--En el modulo de fases extras veremos todo lo relacionado a Redux que no es obligatorio, pero nos otorga cierta funcionalidad.
-
--Los archivos types son una buena practica para evitar errores de sintaxis a la hora de escribir types.
--Cuando escribimos el nombre de un type de Redux, sí lo escribimos mal, podemos notar que falla, pero no nos mostrará un error.
--Para ello existen los archivos types, en donde escribiremos una constante que importaremos en donde usemos ese type.
-
-Creación:
-	-Creamos la carpeta 'types' en src.
-	-Por cada reducer tendremos un archivo 'reducerTypes.js' por ejemplo, sí el reducer es de usuarios, usuariosTypes.
-	-En el exportamos constantes strings según el type que estamos necesitando. Sí el type será 'traer-usuarios' exportamos una const. con eso.
-	-La importamos donde la estemos necesitando, que sería en el action y en el reducer.
-	-La colocamos en lugar del string que escribimos.
+-Ejecutaremos el código de cada action dentro de un try-catch para informar en caso de que algo falle.
