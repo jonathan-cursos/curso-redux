@@ -1,3 +1,6 @@
-Fatal componente
+Tabla como componente
 
--Será el componente que mostramos cuando en nuestro state se muestre un error.
+-En esta clase, dentro de Usuarios, creamos un componente para la tabla, esta es la que renderizará los datos.
+-Al inicio, a esta tabla le estabamos pasando los datos por props, pero con Redux esto no será así.
+-Ya que tenemos un solo almacenamiento, todos los componentes pueden acceder a estos datos, entonces solamente debemos
+	conectarnos a Redux, hacer el mapStateToProps, y ahora las props tendrán estos datos.
