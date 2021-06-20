@@ -1,3 +1,16 @@
-Try catch
+Escenarios asíncronos
 
--Ejecutaremos el código de cada action dentro de un try-catch para informar en caso de que algo falle.
+-Siempre que haya una llamada asincrona, es necesario manejar los 3 estados: cuando hay datos, cargando y error. Y mostrarlos al usuario.
+
+Reducer:
+	-Para ello, en el reducer crearemos el estado inicial de los otros 2 estados.
+		.El de cargando debe iniciar en falso.
+	-Creamos los casos de ambos types. En caso de que haya error o datos, el estado de cargando debe colocarse en falso, y cuando sea 'cargando' en true.
+		.Esto para que en ambos casos, cuando finalice la acción, no quede en true.
+		.Por el resto, pasamos payload como error, y el resto lo dejamos igual.
+
+Actions:
+	-Antes del try, ejecutamos otro dispatch, donde pasamos como type 'cargando'. No pasamos payload.
+	-Para el error, lo mismo, pero dentro del catch, y el payload será el error.
+
+-Con esto, dentro del componente, ya tenemos ambos estados dentro del componente dentro de las props.

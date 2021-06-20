@@ -1,7 +1,10 @@
 import axios from "axios";
-import { TRAER_TODOS } from "../types/usuariosTypes";
+import { CARGANDO, ERROR, TRAER_TODOS } from "../types/usuariosTypes";
 
 export const traerTodos = () => async (dispatch) => {
+  dispatch({
+    type: CARGANDO,
+  });
   try {
     const respuesta = await axios.get(
       "https://jsonplaceholder.typicode.com/users"
@@ -11,6 +14,9 @@ export const traerTodos = () => async (dispatch) => {
       payload: respuesta.data,
     });
   } catch (error) {
-    console.log(`${error}`);
+    dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
   }
 };
