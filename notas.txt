@@ -1,19 +1,14 @@
-ciclo completo de Redux
+Archivos Types
 
-Componente (JSX):
-	-El componente se comunica con el reducer por medio del mapStateToProps.
-		.En este, indicamos que reducer es el que nos va a traer.
-	-En caso de queramos traer otra información del estado, podemos hacerlo con los action, donde indicaremos cual action usar.
-	-En nuestro caso, sí no usamos un action, nos trae un array vacío como información, sí usamos el action creado, nos trae
-		datos de una API.
-	
-Reducer:
-	-Al escoger el reducer que estamos llamando, nos enviará una información dependiendo del switch de ese reducer.
-	-Aquí tenemos que en caso de no pasar action, solo nos retorna el state.
-	-En caso de que haya un type, aquí si sobreescribimos el estado.
-	-Para saber que hay o no un type, es sí llamamos o no un action.
+-En el modulo de fases extras veremos todo lo relacionado a Redux que no es obligatorio, pero nos otorga cierta funcionalidad.
 
-Action:
-	-En caso de llamar un action, este ya vendrá con el type, y realizará su sobreescritura.
-	-Pero aquí en el action, es donde definimos que datos van a sobreescribir el estado.
-	-Finalmente, cuando se sobreescriben los datos, gracias al Virtual DOM, en el componente se verán reflejados.
+-Los archivos types son una buena practica para evitar errores de sintaxis a la hora de escribir types.
+-Cuando escribimos el nombre de un type de Redux, sí lo escribimos mal, podemos notar que falla, pero no nos mostrará un error.
+-Para ello existen los archivos types, en donde escribiremos una constante que importaremos en donde usemos ese type.
+
+Creación:
+	-Creamos la carpeta 'types' en src.
+	-Por cada reducer tendremos un archivo 'reducerTypes.js' por ejemplo, sí el reducer es de usuarios, usuariosTypes.
+	-En el exportamos constantes strings según el type que estamos necesitando. Sí el type será 'traer-usuarios' exportamos una const. con eso.
+	-La importamos donde la estemos necesitando, que sería en el action y en el reducer.
+	-La colocamos en lugar del string que escribimos.
