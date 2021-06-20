@@ -1,16 +1,7 @@
-Escenarios asíncronos
+Spinner componente
 
--Siempre que haya una llamada asincrona, es necesario manejar los 3 estados: cuando hay datos, cargando y error. Y mostrarlos al usuario.
-
-Reducer:
-	-Para ello, en el reducer crearemos el estado inicial de los otros 2 estados.
-		.El de cargando debe iniciar en falso.
-	-Creamos los casos de ambos types. En caso de que haya error o datos, el estado de cargando debe colocarse en falso, y cuando sea 'cargando' en true.
-		.Esto para que en ambos casos, cuando finalice la acción, no quede en true.
-		.Por el resto, pasamos payload como error, y el resto lo dejamos igual.
-
-Actions:
-	-Antes del try, ejecutamos otro dispatch, donde pasamos como type 'cargando'. No pasamos payload.
-	-Para el error, lo mismo, pero dentro del catch, y el payload será el error.
-
--Con esto, dentro del componente, ya tenemos ambos estados dentro del componente dentro de las props.
+-Será el componente que mostremos cuando la página esté cargando.
+-El código lo sacaremos de https://loading.io/css/. Tocaremos el que queramos y nos muestra el html y css (vienen en blanco, debemos cambiar 
+	el color sí lo necesitamos).
+-Es bueno saber que en un metodo de ciclo de vida tambien podemos validar la prop de cargando (por ejemplo).
+-Para poder centrar el elemento de carga, colocamos el elemento de la animación dentro de un container, y a este le colocamos text-align de center.
