@@ -1,7 +1,3 @@
-Spinner componente
+Fatal componente
 
--Será el componente que mostremos cuando la página esté cargando.
--El código lo sacaremos de https://loading.io/css/. Tocaremos el que queramos y nos muestra el html y css (vienen en blanco, debemos cambiar 
-	el color sí lo necesitamos).
--Es bueno saber que en un metodo de ciclo de vida tambien podemos validar la prop de cargando (por ejemplo).
--Para poder centrar el elemento de carga, colocamos el elemento de la animación dentro de un container, y a este le colocamos text-align de center.
+-Será el componente que mostramos cuando en nuestro state se muestre un error.
