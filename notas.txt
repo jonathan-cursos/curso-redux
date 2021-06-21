@@ -1,6 +1,10 @@
-Parametros por URL
+Múltiples Reducers
 
--En esta clase vimos como pasar parametros en la URL (/:param).
--Lo resaltable de esta clase, es que al realizar un map, tenemos como parametro de
-	su callback cada elemento, pero sí pasamos un 2do parametro, será la posición
-	del elemento dentro del nuevo array.
+-Cuando un mismo reducer lo usamos en varios lugares, es necesario validar sí ya tenemos en las props los elementos que
+	necesitamos traer o no.
+-Por nuestro ejemplo, en Usuarios llamamos de forma obligatoria los usuarios, pero en Publicaciones, para llamarlos,
+	validamos primero sí ya están en las props.
+-Esto significa lo siguiente:
+	.Sí estamos en Publicaciones, y cargamos la página, los usuarios no estarán en las props, entonces los traemos.
+	.Sí estamos en Usuarios obligatoriamente los llamamos, sí nos vamos a Publicaciones, ya los usuarios están cargados
+		en las props, porque en Usuarios los cargamos de antes, entonces en Publicaciones ya no tenemos que llamarlos.
