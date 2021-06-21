@@ -1,6 +1,6 @@
-Tabla como componente
+Parametros por URL
 
--En esta clase, dentro de Usuarios, creamos un componente para la tabla, esta es la que renderizará los datos.
--Al inicio, a esta tabla le estabamos pasando los datos por props, pero con Redux esto no será así.
--Ya que tenemos un solo almacenamiento, todos los componentes pueden acceder a estos datos, entonces solamente debemos
-	conectarnos a Redux, hacer el mapStateToProps, y ahora las props tendrán estos datos.
+-En esta clase vimos como pasar parametros en la URL (/:param).
+-Lo resaltable de esta clase, es que al realizar un map, tenemos como parametro de
+	su callback cada elemento, pero sí pasamos un 2do parametro, será la posición
+	del elemento dentro del nuevo array.
