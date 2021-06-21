@@ -1,10 +1,24 @@
 Múltiples Reducers
 
--Cuando un mismo reducer lo usamos en varios lugares, es necesario validar sí ya tenemos en las props los elementos que
-	necesitamos traer o no.
--Por nuestro ejemplo, en Usuarios llamamos de forma obligatoria los usuarios, pero en Publicaciones, para llamarlos,
-	validamos primero sí ya están en las props.
--Esto significa lo siguiente:
-	.Sí estamos en Publicaciones, y cargamos la página, los usuarios no estarán en las props, entonces los traemos.
-	.Sí estamos en Usuarios obligatoriamente los llamamos, sí nos vamos a Publicaciones, ya los usuarios están cargados
-		en las props, porque en Usuarios los cargamos de antes, entonces en Publicaciones ya no tenemos que llamarlos.
+-Ahora vamos a manejar un reducer más para las publicaciones, lo que significa que debemos hacer otro action.
+-En publicaciones llamaremos tanto a publicaciones como a usuarios.
+
+-La creación de los actions es la misma, la de los reducers tambien, pero el reducer de publicacines hay que 
+	colocarlo en el combineReducers.
+
+Colocar 2 reducers y 2 actions en un mismo componente:
+	-Para los reducers tendremos la función mapStateToProps, y para los actions el objeto mapDispatchToProps.
+	-mapStateToProps:
+		.Ahora, retornaremos un objeto, este tendrá los reducers que vamos a usar.
+		.Estos serán sacados del parametro de la función ambos.
+		.En nuestro ejemplo, desestructuramos el parametro.
+	-mapDispatchToProps:
+		.Los actions debemos importarlos por separado.
+		.Dentro de el objeto, cada action importadolo desestructuramos.
+		.Como 2do parametro del 1er parentesis colocamos este mapDispatchToProps.
+		.Ahora, dentro de las props, tenemos cada action que desestructuramos en el objeto.
+
+-Hay que tener cuidado, porque ahora, gracias a que hicimos así el mapStateToProps, los elementos del reducer
+	estarán dentro de un objeto con el nombre del reducer dentro de las props.
+
+-Hay un problema con los usuarios, que o no trae ninguno, o trae muchos, lo solucionamos en la sigiente clase.
