@@ -1,16 +1,7 @@
-Llamando a multiples reducers en la acción
+Evitar segundas búsquedas
 
--El problema que estaba pasando es que al colocar las actions en el dispatchToProps, ambos metodos de los actions 
-	que se estaban ejecutando se llaman 'traerTodos', entonces, cuando en el didMount ejecutamos traerTodos() de las
-	props, estamos haciendo referencia a ambos, por lo que no ejecutaba ninguno.
--Para ello, antes de la clase del componente, desestructuramos los actions de esta forma:
-	.const { traerTodos: usuariosTraerTodos } = usuariosActions;
-	.Lo hacemos con todos los actions que se llamen igual.
-	.Con esto, ahora el elemento que colocaremos en el dispatchToProps, será 'usuariosTraerTodos', y no hay que
-		destructurarlo.
-
--Ahora tenemos otro problema: En las props, ambos reducers están trayendo datos, incluso el de publicaciones, que aun no
-	hemos ejecutado.
--Esto se debe a que en ambos casos, el dispatch está ejecutando el mismo TRAER_TODOS, y como tienen el mismo nombre,
-	el dispatch ejecuta todo lo que tenga el mismo tipo, en cualquiera de todos los actions.
--Para solucionarlo, creamos otro types para publicaciones, y los strings de estos, y los de usuarios, deben ser diferentes.
+-Cuando estamos trayendo las publicaciones, sí nos metemos a las publicaciones de otro usuario, estamos sobreescribiendo
+	las del anterior, eso no es correcto en redux
+-Para solucionarlo, en el action, traemos las publicaciones del reducer con getState(), en una constante propagamos
+	las publicaciones que conseguimos de ahí, junto con la respuesta traída del api, y eso es lo que pasamos en el
+	dispatch.
