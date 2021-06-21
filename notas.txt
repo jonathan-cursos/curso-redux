@@ -1,24 +1,16 @@
-Múltiples Reducers
+Llamando a multiples reducers en la acción
 
--Ahora vamos a manejar un reducer más para las publicaciones, lo que significa que debemos hacer otro action.
--En publicaciones llamaremos tanto a publicaciones como a usuarios.
+-El problema que estaba pasando es que al colocar las actions en el dispatchToProps, ambos metodos de los actions 
+	que se estaban ejecutando se llaman 'traerTodos', entonces, cuando en el didMount ejecutamos traerTodos() de las
+	props, estamos haciendo referencia a ambos, por lo que no ejecutaba ninguno.
+-Para ello, antes de la clase del componente, desestructuramos los actions de esta forma:
+	.const { traerTodos: usuariosTraerTodos } = usuariosActions;
+	.Lo hacemos con todos los actions que se llamen igual.
+	.Con esto, ahora el elemento que colocaremos en el dispatchToProps, será 'usuariosTraerTodos', y no hay que
+		destructurarlo.
 
--La creación de los actions es la misma, la de los reducers tambien, pero el reducer de publicacines hay que 
-	colocarlo en el combineReducers.
-
-Colocar 2 reducers y 2 actions en un mismo componente:
-	-Para los reducers tendremos la función mapStateToProps, y para los actions el objeto mapDispatchToProps.
-	-mapStateToProps:
-		.Ahora, retornaremos un objeto, este tendrá los reducers que vamos a usar.
-		.Estos serán sacados del parametro de la función ambos.
-		.En nuestro ejemplo, desestructuramos el parametro.
-	-mapDispatchToProps:
-		.Los actions debemos importarlos por separado.
-		.Dentro de el objeto, cada action importadolo desestructuramos.
-		.Como 2do parametro del 1er parentesis colocamos este mapDispatchToProps.
-		.Ahora, dentro de las props, tenemos cada action que desestructuramos en el objeto.
-
--Hay que tener cuidado, porque ahora, gracias a que hicimos así el mapStateToProps, los elementos del reducer
-	estarán dentro de un objeto con el nombre del reducer dentro de las props.
-
--Hay un problema con los usuarios, que o no trae ninguno, o trae muchos, lo solucionamos en la sigiente clase.
+-Ahora tenemos otro problema: En las props, ambos reducers están trayendo datos, incluso el de publicaciones, que aun no
+	hemos ejecutado.
+-Esto se debe a que en ambos casos, el dispatch está ejecutando el mismo TRAER_TODOS, y como tienen el mismo nombre,
+	el dispatch ejecuta todo lo que tenga el mismo tipo, en cualquiera de todos los actions.
+-Para solucionarlo, creamos otro types para publicaciones, y los strings de estos, y los de usuarios, deben ser diferentes.
