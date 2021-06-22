@@ -1,11 +1,8 @@
-Inmutabilidad
+Evitar sobrescritura
 
--Seguimos trabajando con el pilar de la inmutabilidad, haciendo que las busquedas que ya hicimos una vez, no se
-	sobreescriban.
--El problema que vamos a resolver en proximas clases, es que por ejemplo, al realizar la busqueda de las publicaciones
-	del usuario 2, sí salimos y volvemos a entrar a ese usuario, tendremos en el reducer las publicaciones del usuario 2
-	duplicadas, lo cual no debería tampoco ser así.
-
--Lo que hicimos en esta clase fue que al buscar las publicaciones de un usuario, a ese usuario en el reducer de usuarios
-	le aparezca un key llamado 'publicaciones_key' que vaya aumentando conforme vamos visitando usuarios, por ejemplo,
-	sí visitamos las publicaciones del usuario 3 luego las del 7, 'publicaciones_key' del 3 será 1, y del 7 será 2.
+-En esta clase presentamos el error y carga, y tambien solucionaremos el problema de la clase anterior.
+-Para solucionarlo, en el componente, llamaremos al action de traer publicaciones, pero solo cuando no esté el key
+	'publicaciones_key' dentro del reducer de usuarios.
+-Para saber que un objeto tenga un key, para validar sí un objeto tiene un key se usa 'in':
+	.'key_ejemplo' in objetoEjemplo: Devuelve true sí el key_ejemplo está dentro de objetoEjemplo.
+-Sí necesitamos pasar eso a negativo: !('key_ejemplo' in objetoEjemplo)
