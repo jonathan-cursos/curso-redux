@@ -1,8 +1,4 @@
-Evitar sobrescritura
+Estado compartido
 
--En esta clase presentamos el error y carga, y tambien solucionaremos el problema de la clase anterior.
--Para solucionarlo, en el componente, llamaremos al action de traer publicaciones, pero solo cuando no esté el key
-	'publicaciones_key' dentro del reducer de usuarios.
--Para saber que un objeto tenga un key, para validar sí un objeto tiene un key se usa 'in':
-	.'key_ejemplo' in objetoEjemplo: Devuelve true sí el key_ejemplo está dentro de objetoEjemplo.
--Sí necesitamos pasar eso a negativo: !('key_ejemplo' in objetoEjemplo)
+-En caso de que a un componente le estemos pasando datos por props y por redux mediante un reducer al mismo tiempo, 
+	siempre ignorara a las props, y tomará las del reducer.
