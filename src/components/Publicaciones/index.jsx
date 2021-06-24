@@ -6,7 +6,8 @@ import * as usuariosActions from "../../actions/usuariosActions";
 import * as publicacionesActions from "../../actions/publicacionesActions";
 
 const { traerTodos: usuariosTraerTodos } = usuariosActions;
-const { traerPorUsuario: publicacionesTraerPorUsuario } = publicacionesActions;
+const { traerPorUsuario: publicacionesTraerPorUsuario, abrirCerrar } =
+  publicacionesActions;
 
 class Publicaciones extends Component {
   async componentDidMount() {
@@ -57,18 +58,10 @@ class Publicaciones extends Component {
     if (!("publicaciones_key" in usuarios[key])) return;
 
     const { publicaciones_key } = usuarios[key];
-    return publicaciones[publicaciones_key].map((publicacion) => {
-      return (
-        <div
-          className="pub_titulo"
-          key={publicacion.id}
-          onClick={() => alert(publicacion.id)}
-        >
-          <h2>{publicacion.title}</h2>
-          <h3>{publicacion.body}</h3>
-        </div>
-      );
-    });
+    return this.mostrarInfo(
+      publicaciones[publicaciones_key],
+      publicaciones_key
+    );
   };
 
   ponerUsuario = () => {
@@ -91,6 +84,21 @@ class Publicaciones extends Component {
     return <h1>Publicaciones de {nombre}</h1>;
   };
 
+  mostrarInfo = (publicaciones, publicaciones_key) => {
+    return publicaciones.map((publicacion, com_key) => {
+      return (
+        <div
+          className="pub_titulo"
+          key={publicacion.id}
+          onClick={() => this.props.abrirCerrar(publicaciones_key, com_key)}
+        >
+          <h2>{publicacion.title}</h2>
+          <h3>{publicacion.body}</h3>
+        </div>
+      );
+    });
+  };
+
   render() {
     console.log(this.props);
     return (
@@ -109,6 +117,7 @@ const mapStateToProps = ({ usuariosReducer, publicacionesReducer }) => {
 const mapDispatchToProps = {
   usuariosTraerTodos,
   publicacionesTraerPorUsuario,
+  abrirCerrar,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Publicaciones);
