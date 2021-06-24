@@ -9,9 +9,21 @@ export const traerTodas = () => async (dispatch) => {
     const respuesta = await axios.get(
       "https://jsonplaceholder.typicode.com/todos"
     );
+
+    const tareas = {};
+    respuesta.data.map(
+      (tar) =>
+        (tareas[tar.userId] = {
+          ...tareas[tar.userId], //Todo lo que ya tenía
+          [tar.id]: {
+            ...tar, //Todo el elemento del array
+          },
+        })
+    );
+
     dispatch({
       type: TRAER_TODAS,
-      payload: respuesta.data,
+      payload: respuesta,
     });
   } catch (error) {
     console.log(error.message);

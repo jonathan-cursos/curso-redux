@@ -1,4 +1,15 @@
-Estado compartido
+Normalizando datos
 
--En caso de que a un componente le estemos pasando datos por props y por redux mediante un reducer al mismo tiempo, 
-	siempre ignorara a las props, y tomará las del reducer.
+-Al incio, al traer las tareas, vemos que son 200.
+-Las tareas vienen en un array, cada array tiene un objeto, donde cada objeto es una tarea.
+-Nuestra forma de normalizarlos será crear un objeto, donde cada key es un userId (estos estarán dentro de cada
+	tarea), cada objeto de estos tiene como key el id de la tarea, y como valor, la tarea correspondiente a ese id.
+-La idea es crear en ese caso un objeto que sea más sencillo de leer.
+
+Forma de hacerlo:
+	-Creamos una constante con un objeto vacío.
+	-Iteramos los datos del API con map.
+	-Del objeto, le colocamos que cada key sea del useId del actual elemento del array, y como valor, damos un objeto.
+	-Este objeto recibirá todo lo que ya había antes en él, y ademas otro elemento, cuyo key sean cada id de cada
+		tarea, y como value un objeto con los datos que necesitamos de cada tarea, en nuestro caso, todos los datos
+		de esa tarea.
