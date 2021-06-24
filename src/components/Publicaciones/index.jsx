@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Spinner from "../General/Spinner";
 import Fatal from "../General/Fatal";
+import Comentarios from "./Comentarios";
 import * as usuariosActions from "../../actions/usuariosActions";
 import * as publicacionesActions from "../../actions/publicacionesActions";
 
@@ -94,7 +95,7 @@ class Publicaciones extends Component {
         >
           <h2>{publicacion.title}</h2>
           <h3>{publicacion.body}</h3>
-          {publicacion.abierto ? "abierto" : "cerrado"}
+          {publicacion.abierto ? <Comentarios /> : ""}
         </div>
       );
     });
