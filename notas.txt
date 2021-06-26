@@ -1,7 +1,4 @@
-Redireccionar
+Reutilizar componentes
 
--En nuestro caso, haremos un redireccionamiento en caso de que el elemento 'regresar' del reducer sea verdadero.
--Para redireccionar, importamos Redirect de react-router-dom.
--En caso de que el elemento del reducer sea true, renderizamos Redirect, que tendrá la prop 'to', que indica
-	la ruta a redireccionar.
--Este elemento del reducer, lo tenemos que volver a colocar en falso, y lo haremos cuando traemos todas las tareas.
+-En esta clase estamos reutilizando el componente para agregar, haciendo que sí vienen parametros en la url, hagamos una cosa, sino, editamos.
+-Además de esto, editaremos los inputs con la info de esos parametros de la url sí es que vienen.

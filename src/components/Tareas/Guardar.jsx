@@ -6,6 +6,22 @@ import Fatal from "../General/Fatal";
 import * as tareasActions from "../../actions/tareasActions";
 
 class Guardar extends Component {
+  componentDidMount() {
+    const {
+      match: {
+        params: { usu_id, tar_id },
+      },
+      tareas,
+      cambioUsuarioId,
+      cambioTitulo,
+    } = this.props;
+
+    if (usu_id && tar_id) {
+      const tarea = tareas[usu_id][tar_id]; //tarea actual a editar, en caso de que vengan params. en la url
+      cambioUsuarioId(tarea.userId);
+      cambioTitulo(tarea.title);
+    }
+  }
   cambioUsuarioId = (event) => {
     this.props.cambioUsuarioId(event.target.value);
   };
@@ -15,13 +31,34 @@ class Guardar extends Component {
   };
 
   guardar = () => {
-    const { usuario_id, titulo } = this.props;
-    const nuevaTarea = {
+    const {
+      match: {
+        params: { usu_id, tar_id },
+      },
+      usuario_id,
+      titulo,
+      tareas,
+      agregar,
+      editar,
+    } = this.props;
+
+    const nueva_tarea = {
       userId: usuario_id,
       title: titulo,
       completed: false,
     };
-    this.props.agregar(nuevaTarea);
+
+    if (usu_id && tar_id) {
+      const tarea = tareas[usu_id][tar_id];
+      const tarea_editada = {
+        ...nueva_tarea,
+        completed: tarea.completed,
+        id: tarea.id,
+      };
+      editar(tarea_editada);
+    } else {
+      agregar(nueva_tarea);
+    }
   };
 
   deshabilitar = () => {
