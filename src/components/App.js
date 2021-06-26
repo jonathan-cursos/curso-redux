@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import Usuarios from "./Usuarios";
 import Publicaciones from "./Publicaciones";
 import Tareas from "./Tareas";
+import TareasGuardar from "./Tareas/Guardar";
 
 const App = () => (
   <BrowserRouter>
@@ -11,6 +12,7 @@ const App = () => (
     <div id="margen">
       <Route exact path="/" component={Usuarios} />
       <Route exact path="/tareas" component={Tareas} />
+      <Route exact path="/tareas/guardar" component={TareasGuardar} />
       <Route exact path="/publicaciones/:key" component={Publicaciones} />
     </div>
   </BrowserRouter>

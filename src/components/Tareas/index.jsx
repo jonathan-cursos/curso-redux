@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import * as tareasActions from "../../actions/tareasActions";
 import Spinner from "../General/Spinner";
 import Fatal from "../General/Fatal";
@@ -33,7 +34,6 @@ class Tareas extends Component {
     const por_usuario = {
       ...tareas[usu_id],
     };
-    console.log(por_usuario);
     return Object.keys(por_usuario).map((tar_id) => {
       return (
         <div key={tar_id}>
@@ -48,8 +48,14 @@ class Tareas extends Component {
   };
 
   render() {
-    // console.log(this.props);
-    return <div>{this.mostrarContenido()}</div>;
+    return (
+      <div>
+        <button type="button">
+          <Link to="/tareas/guardar">Agregar</Link>
+        </button>
+        {this.mostrarContenido()}
+      </div>
+    );
   }
 }
 
