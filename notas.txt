@@ -1,5 +1,7 @@
-POST
+Redireccionar
 
--El url que estamos usando para hacer POST, es uno de pruebas. No estamos guardando nada.
--En caso de que hagamos el post funcional, el dispatch solo tendrá type, no payload, ya que estamos guardando la info en la DB.
--El case de este dispatch pondrá el loading en falso, error vacío, y tareas las reiniciará en un objeto vacío, porque ya enviamos la que teníamos.
+-En nuestro caso, haremos un redireccionamiento en caso de que el elemento 'regresar' del reducer sea verdadero.
+-Para redireccionar, importamos Redirect de react-router-dom.
+-En caso de que el elemento del reducer sea true, renderizamos Redirect, que tendrá la prop 'to', que indica
+	la ruta a redireccionar.
+-Este elemento del reducer, lo tenemos que volver a colocar en falso, y lo haremos cuando traemos todas las tareas.
