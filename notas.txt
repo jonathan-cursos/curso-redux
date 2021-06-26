@@ -1,5 +1,5 @@
-PUT
+DELETE
 
--En este caso, lo mas importante que hicimos fue el reducer cambioCheck.
--Este reducer permite que el check permanezca cambiado al dar click en el y navegar entre las páginas.
--Podemos ver en el reducer que hay un paso que se repitió varias veces, esto con el fin de acceder entre niveles del objeto, ya que dentro tiene otros objetos.
+-La razon de que usemos otro metodo del ciclo de vida, es que en el componentDidMont, las tareas no existian.
+-Esto porque las limpiamos en el action.
+-Entonces en ese otro metodo, las volvemos a llamar.
