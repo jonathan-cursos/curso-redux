@@ -47,3 +47,26 @@ export const cambioTitulo = (titulo) => (dispatch) => {
     payload: titulo,
   });
 };
+
+export const agregar = (nuevaTarea) => async (dispatch) => {
+  dispatch({
+    type: CARGANDO,
+  });
+  try {
+    const respuesta = await axios.post(
+      "https://jsonplaceholder.typicode.com/todos",
+      nuevaTarea
+    );
+    console.log(respuesta.data);
+    dispatch({
+      //No colocamos payload, porque los datos los estamos enviando a una DB
+      type: "agregada",
+    });
+  } catch (error) {
+    console.log(error.message);
+    dispatch({
+      type: ERROR,
+      payload: "Intente más tarde",
+    });
+  }
+};

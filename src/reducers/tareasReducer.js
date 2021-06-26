@@ -20,6 +20,8 @@ const usuariosReducer = (state = INITIAL_STATE, action) => {
       return { ...state, usuario_id: action.payload };
     case "cambio_titulo":
       return { ...state, titulo: action.payload };
+    case "agregada":
+      return { ...state, tareas: {}, cargando: false, error: "" };
     default:
       return state;
   }
