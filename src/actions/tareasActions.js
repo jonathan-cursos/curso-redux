@@ -1,5 +1,12 @@
 import axios from "axios";
-import { CARGANDO, ERROR, TRAER_TODAS } from "../types/tareasTypes";
+import {
+  CARGANDO,
+  ERROR,
+  TRAER_TODAS,
+  CAMBIO_USUARIO_ID,
+  CAMBIO_TITULO,
+  AGREGADA,
+} from "../types/tareasTypes";
 
 export const traerTodas = () => async (dispatch) => {
   dispatch({
@@ -36,14 +43,14 @@ export const traerTodas = () => async (dispatch) => {
 
 export const cambioUsuarioId = (usuario_id) => (dispatch) => {
   dispatch({
-    type: "cambio_usuario_id",
+    type: CAMBIO_USUARIO_ID,
     payload: usuario_id,
   });
 };
 
 export const cambioTitulo = (titulo) => (dispatch) => {
   dispatch({
-    type: "cambio_titulo",
+    type: CAMBIO_TITULO,
     payload: titulo,
   });
 };
@@ -60,7 +67,7 @@ export const agregar = (nuevaTarea) => async (dispatch) => {
     console.log(respuesta.data);
     dispatch({
       //No colocamos payload, porque los datos los estamos enviando a una DB
-      type: "agregada",
+      type: AGREGADA,
     });
   } catch (error) {
     console.log(error.message);
