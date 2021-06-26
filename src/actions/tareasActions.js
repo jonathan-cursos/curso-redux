@@ -5,7 +5,8 @@ import {
   TRAER_TODAS,
   CAMBIO_USUARIO_ID,
   CAMBIO_TITULO,
-  AGREGADA,
+  GUARDAR,
+  ACTUALIZAR,
 } from "../types/tareasTypes";
 
 export const traerTodas = () => async (dispatch) => {
@@ -67,7 +68,7 @@ export const agregar = (nuevaTarea) => async (dispatch) => {
     console.log(respuesta.data);
     dispatch({
       //No colocamos payload, porque los datos los estamos enviando a una DB
-      type: AGREGADA,
+      type: GUARDAR,
     });
   } catch (error) {
     console.log(error.message);
@@ -78,6 +79,46 @@ export const agregar = (nuevaTarea) => async (dispatch) => {
   }
 };
 
-export const editar = (tareaEditada) => (dispatch) => {
-  console.log(tareaEditada);
+export const editar = (tareaEditada) => async (dispatch) => {
+  dispatch({
+    type: CARGANDO,
+  });
+  try {
+    const respuesta = await axios.put(
+      `https://jsonplaceholder.typicode.com/todos/${tareaEditada.id}`,
+      tareaEditada
+    );
+    console.log(respuesta.data);
+    dispatch({
+      //No colocamos payload, porque los datos los estamos enviando a una DB
+      type: GUARDAR,
+    });
+  } catch (error) {
+    console.log(error.message);
+    dispatch({
+      type: ERROR,
+      payload: "Intente más tarde",
+    });
+  }
+};
+
+export const cambioCheck = (usu_id, tar_id) => (dispatch, getState) => {
+  const { tareas } = getState().tareasReducer;
+  const seleccionada = tareas[usu_id][tar_id];
+
+  const actualizadas = {
+    ...tareas,
+  };
+  actualizadas[usu_id] = {
+    ...tareas[usu_id],
+  };
+  actualizadas[usu_id][tar_id] = {
+    //Lo que hacemos al hacer esto tantas veces es subir de niveles dentro de los objetos que tienen dentro otros objetos
+    ...tareas[usu_id][tar_id],
+    completed: !seleccionada.completed,
+  };
+  dispatch({
+    type: ACTUALIZAR,
+    payload: actualizadas,
+  });
 };

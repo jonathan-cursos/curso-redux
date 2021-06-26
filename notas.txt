@@ -1,4 +1,5 @@
-Reutilizar componentes
+PUT
 
--En esta clase estamos reutilizando el componente para agregar, haciendo que sí vienen parametros en la url, hagamos una cosa, sino, editamos.
--Además de esto, editaremos los inputs con la info de esos parametros de la url sí es que vienen.
+-En este caso, lo mas importante que hicimos fue el reducer cambioCheck.
+-Este reducer permite que el check permanezca cambiado al dar click en el y navegar entre las páginas.
+-Podemos ver en el reducer que hay un paso que se repitió varias veces, esto con el fin de acceder entre niveles del objeto, ya que dentro tiene otros objetos.
