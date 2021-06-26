@@ -23,7 +23,7 @@ export const traerTodas = () => async (dispatch) => {
 
     dispatch({
       type: TRAER_TODAS,
-      payload: respuesta,
+      payload: tareas,
     });
   } catch (error) {
     console.log(error.message);
