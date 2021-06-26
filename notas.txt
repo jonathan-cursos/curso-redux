@@ -1,5 +1,5 @@
-DELETE
+Últimos detalles
 
--La razon de que usemos otro metodo del ciclo de vida, es que en el componentDidMont, las tareas no existian.
--Esto porque las limpiamos en el action.
--Entonces en ese otro metodo, las volvemos a llamar.
+-Creamos un action para limpiar los forms en caso de que en la url no vengan parametros.
+-Esto porque de lo contrario, si ingresamos a editar una tarea, pero nos devolvemos y damos a agregar, los forms vendrían
+	llenos con esa tarea, entonces con esto los limpiamos.

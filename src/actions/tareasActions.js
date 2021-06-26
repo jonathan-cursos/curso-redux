@@ -7,6 +7,7 @@ import {
   CAMBIO_TITULO,
   GUARDAR,
   ACTUALIZAR,
+  LIMPIAR,
 } from "../types/tareasTypes";
 
 export const traerTodas = () => async (dispatch) => {
@@ -143,4 +144,10 @@ export const eliminar = (tar_id) => async (dispatch) => {
       payload: "Servicio no disponible",
     });
   }
+};
+
+export const limpiarForma = () => (dispatch) => {
+  dispatch({
+    type: LIMPIAR,
+  });
 };

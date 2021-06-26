@@ -13,6 +13,7 @@ class Guardar extends Component {
       },
       tareas,
       cambioUsuarioId,
+      limpiarForma,
       cambioTitulo,
     } = this.props;
 
@@ -20,6 +21,8 @@ class Guardar extends Component {
       const tarea = tareas[usu_id][tar_id]; //tarea actual a editar, en caso de que vengan params. en la url
       cambioUsuarioId(tarea.userId);
       cambioTitulo(tarea.title);
+    } else {
+      limpiarForma();
     }
   }
   cambioUsuarioId = (event) => {
