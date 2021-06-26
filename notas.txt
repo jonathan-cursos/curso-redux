@@ -1,8 +1,4 @@
-Mapear objetos
+Manejar inputs con reducers
 
--En JS no podemos mapear objetos, como lo necesitamos hacer con las tareas.
--Para solucionar este problema está esta opción:
-	.Usamos Object.keys() con el objeto, ese array lo mapeamos.
-	.Dentro de lo devuelto por el mapeo, podemos usar el objeto original, y sí necesitamos uno de sus datos, lo obtendremos usando objeto[element]
-		donde element es cada elemento del mapeo.
-	.Esto nos funciona, porque cada key del objeto, es el id de cada usuario.
+-Importante, en este modulo, estamos manejando inputs con Redux para poder enviar datos via http, esto no es recomendado.
+-Debemos seguir manejandolos como siempre, no con Redux, esto lo hacemos solo de forma educativa.
